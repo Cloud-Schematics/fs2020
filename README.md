@@ -35,11 +35,10 @@ Within the project, there are various files in which you will need to have famil
 Each environment that you create will require a Workspace. 
 
 1. Login in to your IBM Cloud account via the portal. Navigate to the menu and select [Schematics](https://cloud.ibm.com/schematics).
+
 ![Schematics](docs/schematics-menu.png)
 
-- Click the "Create a workspace" button.
-![Create Workspace](docs/create-workspace.png)
-
+- Click the ![Create Workspace](docs/create-workspace.png) button.
 - Provide a Workspace Name
 - Enter any tags in which you would like to specify
 - Select the Resource Group, this can also be reflected in the Plan variables.
