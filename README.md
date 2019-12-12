@@ -52,7 +52,6 @@ Each environment that you create will require a Workspace.
 
 ![Workspace Repo](docs/workspace-repo-url.png)
 
-
 2. Set your variables for the items in wish you choose to modify by entering a new value in the "Override value" textbox.
 - **iaas_classic_username** - Enter your IaaS Username (Be sure to set this as Sensitive)
 - **iaas_classic_api_key** - Enter your IaaS API Key (Be sure to set this as Sensitive)
@@ -66,8 +65,21 @@ Each environment that you create will require a Workspace.
 - **image** - Provide the ID of the OS Image you wish to use.
 - **profile** - Provide the name of the Instance Profile type you wish to provision.
 
+Once all of the values have been entered, click the Create button to finalize the new Workspace. This will not create any resources. In the next steps we will look at executing the Plan
+
+![Workspace Repo](docs/workspace-order-create.png)
 
 ## Task 3: Apply the Plan
+
+You now should have a Workspace created. The next step will be to Generate a Plan of your workspace template. Click "Generate plan" to create a Terraform execution plan.
+
+![Workspace Name](docs/generate-plan-execution.png)
+
+
+![Workspace Name](docs/generate-plan-execution-log.png)
+
+
+![Workspace Name](docs/workspace-summary.png)
 
 
 ## Task 4: Modify the Plan (optional)
