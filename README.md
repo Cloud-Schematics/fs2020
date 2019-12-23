@@ -97,4 +97,12 @@ Now let's execute the plan to create the resources. Click the "Apply plan" butto
 
 ## Task 4: Modify the Plan (optional)
 
-So far in the labe we created infrastructure in two zones. We will now look into adding a third zone to the deployment so we have full coverage of the three zones in the region. We will look at each of the resources that we will need to add and modify in the plan templates.
+So far in the lab we created infrastructure in two zones. We will now look into adding a third zone to the deployment so we have full coverage of the three zones in the region. We will look at each of the resources that we will need to add and modify in the plan templates.
+
+1. First let's look into the variables that we think we will need to add. We currently have two zones specified, so we should add a third zone to the variables.tf file.
+
+```
+variable "zone3" {
+  default = "us-south-3"
+}
+```
