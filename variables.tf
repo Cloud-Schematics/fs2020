@@ -14,6 +14,10 @@ variable "zone2" {
   default = "us-south-2"
 }
 
+variable "zone3" {
+  default = "us-south-3"
+}
+
 variable "ssh_public_key" {
   default = ""
 }
