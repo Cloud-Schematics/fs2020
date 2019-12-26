@@ -189,4 +189,17 @@ resource "ibm_is_lb_pool_member" "lb1-pool-member3" {
 
 7. After you have pulled the latest changes into your Schematics Workspace, you should now see the new variables listed. Go ahead and provide values if you wish to modify them from the default values you may have specified. Also, make certain the CIDR block that you specify for zone 3, fits within the  VPC CIDR block that you previously configured.
 
-8. Now with the variables updated and all of the new resources defined in your template, it is time to apply these changes. We can do this by going back to the "Activity" screen in your Schematics Workspace. Click the "Generate Plan" so we can see the modifications that will be made to the infrastructre.
+8. Now with the variables updated and all of the new resources defined in your template, it is time to apply these changes. We can do this by going back to the "Activity" screen in your Schematics Workspace. Click the "Generate Plan" so we can see the modifications that will be made to the infrastructre. You will notice the resources that will need to be created as well as a few resources will be removed since they will be recreated. If the Plan is successful, you can now "Apply" the plan. If there were errors, try to figure out what may have caused the issue by viewing the log for the plan.
+
+9. Follow the log as the resources are being created and/or recreated. At the end, take note of the URL, it should be the same as you had previously, and test that you get the nginx sample web page.
+
+10. In this lab you have successfully built an initial 2 zone environment, attached a load balancer, and learned how to add an additional zone to the plan. To finish up with this lab, all you need to do now is delete your resources. You can also delete the Workspace if you choose to not keep it. Select the "Delete" option in the Action Menu to begin the process.
+
+![Workspace Delete](docs/workspace-action-delete.png)
+
+11. In the popup, select if you wish to remove the workspace or just the resources. Once you have made your selections, click the "Delete" button. This will begin the process of removing resources. Once it is started, you can follow the log to watch the progress of this step and wait for completion. 
+
+![Workspace Delete](docs/workspace-delete-popup.png)
+
+12. Congratulations, you have completed the lab. All resources should now be removed. Think of other ways you may be able to modify the template. Possibly try adding additional instances to each of the zones, and add them as members to the load balancer as well.
+
