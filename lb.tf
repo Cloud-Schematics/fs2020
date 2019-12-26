@@ -40,7 +40,7 @@ resource "ibm_is_lb_pool_member" "lb1-pool-member2" {
 
 
 
-/*
+
 resource "ibm_is_lb_pool_member" "lb1-pool-member3" {
   count = 1
   lb = "${ibm_is_lb.lb1.id}"
@@ -48,4 +48,3 @@ resource "ibm_is_lb_pool_member" "lb1-pool-member3" {
   port = "80"
   target_address = "${ibm_is_instance.instance3.primary_network_interface.0.primary_ipv4_address}"
 }
-*/
