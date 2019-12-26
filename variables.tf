@@ -42,3 +42,11 @@ variable "profile" {
   default = "cx2-2x4"
   description = "Instance profile to be used for virtual instances"
 }
+
+
+variable "zone3" {
+  default = "us-south-3"
+}
+variable "zone3_cidr" {
+  default = "172.16.3.0/24"
+}
