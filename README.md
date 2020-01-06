@@ -101,6 +101,7 @@ Click on the "View log" link to see the progress of the executing plan. The log 
 Now let's execute the plan to create the resources. Click the "Apply plan" button. Resources should not start to be provisioned. Like the "Generating Plan" step, you can also view the progress within the "View log" link while resources are being created. If any errors arise, you should see the reason within the log. This initial plan template should not have any issues, so if you have an issue, you may need to check your permissions and credentials.
 
 ## Task 4: Modify the Plan (optional)
+**Skip to Task 5 if you do not have a fork of the Github repo to use**
 
 So far in the lab we created infrastructure in two zones. We will now look into adding a third zone to the deployment so we have full coverage of the three zones in the region. We will look at each of the resources that we will need to add and modify in the plan templates.
 
@@ -198,13 +199,17 @@ resource "ibm_is_lb_pool_member" "lb1-pool-member3" {
 
 9. Follow the log as the resources are being created and/or recreated. At the end, take note of the URL, it should be the same as you had previously, and test that you get the nginx sample web page.
 
-10. In this lab you have successfully built an initial 2 zone environment, attached a load balancer, and learned how to add an additional zone to the plan. To finish up with this lab, all you need to do now is delete your resources. You can also delete the Workspace if you choose to not keep it. Select the "Delete" option in the Action Menu to begin the process.
+## Task 5: Delete Resources and Workspace
+
+In this lab you have successfully built an initial 2 zone environment, attached a load balancer, and learned how to add an additional zone to the plan. To finish up with this lab, all you need to do now is delete your resources. You can also delete the Workspace if you choose to not keep it. 
+
+1. Select the "Delete" option in the Action Menu to begin the process.
 
 ![Workspace Delete](docs/workspace-action-delete.png)
 
-11. In the popup, select if you wish to remove the workspace or just the resources. Once you have made your selections, click the "Delete" button. This will begin the process of removing resources. Once it is started, you can follow the log to watch the progress of this step and wait for completion. 
+2. In the popup, select if you wish to remove the workspace or just the resources. Once you have made your selections, click the "Delete" button. This will begin the process of removing resources. Once it is started, you can follow the log to watch the progress of this step and wait for completion. 
 
 ![Workspace Delete](docs/workspace-delete-popup.png)
 
-12. Congratulations, you have completed the lab. All resources should now be removed. Think of other ways you may be able to modify the template. Possibly try adding additional instances to each of the zones, and add them as members to the load balancer as well.
+3. Congratulations, you have completed the lab. All resources should now be removed. Think of other ways you may be able to modify the template. Possibly try adding additional instances to each of the zones, and add them as members to the load balancer as well.
 
