@@ -14,14 +14,16 @@ resource "ibm_database" "test_acc" {
   location          = "eu-gb"
   adminpassword     = "adminpassword"
 
-  whitelist = {
+  whitelist = [
+    {
     address     = "${ibm_is_subnet.subnet1.ipv4_cidr_block}"
     description = "${ibm_is_subnet.subnet1.name}"
-  }
-  whitelist = {
-    address     = "${ibm_is_subnet.subnet2.ipv4_cidr_block}"
-    description = "${ibm_is_subnet.subnet2.name}"
-  }
+    },
+    {
+      address     = "${ibm_is_subnet.subnet2.ipv4_cidr_block}"
+      description = "${ibm_is_subnet.subnet2.name}"
+    }
+  ]
 
   tags = ["tag1", "tag2"]
 
