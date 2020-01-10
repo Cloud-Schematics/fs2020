@@ -7,7 +7,7 @@ This lab will introduce you to the concepts within Schematics and how to create 
 
 1. You must have an IBM Cloud account. You can sign up for a trial account if you do not have an account. The account will require the IBMid. If you do not have an IBMid, register and one will be created.
 
-2. You will need to have an Infrastructure Username and API Key as well as an IBM Cloud API Key.
+2. The workstation or laptop you are using must have git installed.
 
 3. Check to make certain you have the appropriate role access on your account to provision infrastructure. If you are assigned an IBM Cloud Schematics service access role, you can view, create, update, or delete workspaces in IBM Cloud Schematics. To provision the IBM Cloud resources that you defined in your Terraform template, you must be assigned the IAM platform or service access role that is required to provision the individual resource. Refer to the [documentation](https://cloud.ibm.com/docs/home/alldocs) for your resource to determine the access policies that you need to provision and work with your resource. To successfully provision IBM Cloud resources, users must have access to a paid IBM Cloud account. Charges incur when you create the resources in the IBM Cloud account, which is initiated by clicking the Apply plan button. [Schematics Access](https://cloud.ibm.com/docs/schematics?topic=schematics-access)
 
@@ -103,99 +103,17 @@ Now let's execute the plan to create the resources. Click the "Apply plan" butto
 ## Task 4: Modify the Plan (optional)
 **Skip to Task 5 if you do not have a fork of the Github repo to use**
 
-So far in the lab we created infrastructure in two zones. We will now look into adding a third zone to the deployment so we have full coverage of the three zones in the region. We will look at each of the resources that we will need to add and modify in the plan templates.
+So far in the lab we created infrastructure in two zones. We will now look into adding a database to the deployment and whitelisting both zones to the database. We will look at each of the resources that we will need to add and modify in the plan templates.
 
-1. First let's look into the variables that we think we will need to add to the project template. All variables are held within the `variables.tf` file. We currently have two zones specified, so we should add a third zone. We will also need to add the CIDR block to be used for the zone 3 address prefix and subnet. You can add any default value that you wish for this.
+1. With your local copy the forked repository rename the file `db.txt` to `db.tf`. This file contained Terraform resource definitions that were ignored because the file extention was ".txt" and not ".tf" previously.
 
-```
-variable "zone3" {
-  default = "us-south-3"
-}
-```
+2. Use git to `add`, `commit`, and `push` your changes back to your repository. You can go to your repositories location on GitHub and look at the `db.tf` file you just added. You will see two (2) resources were added; one data resource for your `default` resource group in IBM Cloud one Postgres IBM Cloud Database. (All IBM Cloud services are associated with a resource group. In this example we will associate the new Postgres instance to the default group). 
 
-```
-variable "zone3_cidr" {
-  default = "172.16.3.0/24"
-}
-```
-
-2. Now that we have the new variables defined, we will need to add the resources to the template. Here we will create a new Address Prefix (`ibm_is_vpc_address_prefix`) resource as well as a new Subnet (`ibm_is_subnet`) resource.
-
-```
-resource "ibm_is_vpc_address_prefix" "vpc-ap3" {
-  name = "vpc-ap3"
-  zone = "${var.zone3}"
-  vpc  = "${ibm_is_vpc.vpc1.id}"
-  cidr = "${var.zone3_cidr}"
-}
-```
-
-```
-resource "ibm_is_subnet" "subnet3" {
-  name            = "subnet3"
-  vpc             = "${ibm_is_vpc.vpc1.id}"
-  zone            = "${var.zone3}"
-  ipv4_cidr_block = "${var.zone3_cidr}"
-  depends_on      = ["ibm_is_vpc_address_prefix.vpc-ap3"]
-}
-```
-
-3. Next we will look at adding the new Compute Instance (`ibm_is_instance`) and also add a resource for the Floating IP (`ibm_is_floating_ip`). Additionally, if you wish to see the Floating IP address assigned to the third instance, you can add a new output variable in the `outputs.tf` file.
-
-```
-resource "ibm_is_instance" "instance3" {
-  name    = "instance3"
-  image   = "${var.image}"
-  profile = "${var.profile}"
-
-  primary_network_interface = {
-    subnet = "${ibm_is_subnet.subnet3.id}"
-  }
-  vpc  = "${ibm_is_vpc.vpc1.id}"
-  zone = "${var.zone3}"
-  keys = ["${ibm_is_ssh_key.ssh1.id}"]
-  user_data = "${data.template_cloudinit_config.cloud-init-apptier.rendered}"
-}
-```
-
-```
-resource "ibm_is_floating_ip" "floatingip3" {
-  name = "fip3"
-  target = "${ibm_is_instance.instance3.primary_network_interface.0.id}"
-}
-```
-
-```
-output "FloatingIP-3" {
-    value = "${ibm_is_floating_ip.floatingip3.address}"
-}
-```
-
-
-4. We have Security Group resources that get created, but these resources also have a `depends_on` array defined for the floating IP resources. We should add the zone 3 floating IP to these resources so they do not get created prior to all three zone floating IPs finish being created. This applies to both the `sg1_tcp_rule_22` and `sg1_tcp_rule_80` resources.
-
-```
-  depends_on = ["ibm_is_floating_ip.floatingip1", "ibm_is_floating_ip.floatingip2", "ibm_is_floating_ip.floatingip3"]
-```
-
-5. Now that we have all of the appropriate resources defined for the new additional zone, we can now add the Load Balancer Pool Member (`ibm_is_lb_pool_member`) for the third instance.
-
-```
-resource "ibm_is_lb_pool_member" "lb1-pool-member3" {
-  count = 1
-  lb = "${ibm_is_lb.lb1.id}"
-  pool = "${ibm_is_lb_pool.lb1-pool.id}"
-  port = "80"
-  target_address = "${ibm_is_instance.instance3.primary_network_interface.0.primary_ipv4_address}"
-}
-```
-6. After making all of the modifications to the appropriate files, you will now need to `commit` and `push` your changes back to your repository. Once you have completed this, and verified that the files have been pushed back into the repository, you will need to go back in to your Schematics Workspace, under Settings, and click "Pull Latest".
+3. Go back in to your Schematics Workspace, under Settings, and click "Pull Latest".
 
 ![Workspace Settings - Pull Latest](docs/workspace-settings-pull-latest.png)
 
-7. After you have pulled the latest changes into your Schematics Workspace, you should now see the new variables listed. Go ahead and provide values if you wish to modify them from the default values you may have specified. Also, make certain the CIDR block that you specify for zone 3, fits within the  VPC CIDR block that you previously configured.
-
-8. Now with the variables updated and all of the new resources defined in your template, it is time to apply these changes. We can do this by going back to the "Activity" screen in your Schematics Workspace. Click the "Generate Plan" so we can see the modifications that will be made to the infrastructre. You will notice the resources that will need to be created as well as a few resources will be removed since they will be recreated. If the Plan is successful, you can now "Apply" the plan. If there were errors, try to figure out what may have caused the issue by viewing the log for the plan.
+8. Now with the database resource added in the template and the latest verion of the repository pulled by Schematics, it is time to apply the changes. We can do this by going back to the "Activity" screen in your Schematics Workspace. Click the "Generate Plan" so we can see the modifications that will be made to the infrastructre. You will notice the resources that will need to be created as well as a few resources will be removed since they will be recreated. If the Plan is successful, you can now "Apply" the plan. If there were errors, try to figure out what may have caused the issue by viewing the log for the plan.
 
 9. Follow the log as the resources are being created and/or recreated. At the end, take note of the URL, it should be the same as you had previously, and test that you get the nginx sample web page.
 
