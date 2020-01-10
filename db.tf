@@ -11,7 +11,7 @@ resource "ibm_database" "test_acc" {
   name              = "demo-postgres"
   service           = "databases-for-postgresql"
   plan              = "standard"
-  location          = "eu-gb"
+  location          = "us-south"
   adminpassword     = "adminpassword"
 
   whitelist = [
