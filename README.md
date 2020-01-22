@@ -7,9 +7,11 @@ This lab will introduce you to the concepts within Schematics and how to create 
 
 1. You must have an IBM Cloud account. You can sign up for a trial account if you do not have an account. The account will require the IBMid. If you do not have an IBMid, register and one will be created.
 
-2. You will need to have an Infrastructure Username and API Key as well as an IBM Cloud API Key.
+2. You will need to have an Infrastructure Username and API Key as well as an IBM Cloud API Key. Additionally, you should have the IBM Cloud CLI installed.
 
-3. Check to make certain you have the appropriate role access on your account to provision infrastructure. If you are assigned an IBM Cloud Schematics service access role, you can view, create, update, or delete workspaces in IBM Cloud Schematics. To provision the IBM Cloud resources that you defined in your Terraform template, you must be assigned the IAM platform or service access role that is required to provision the individual resource. Refer to the [documentation](https://cloud.ibm.com/docs/home/alldocs) for your resource to determine the access policies that you need to provision and work with your resource. To successfully provision IBM Cloud resources, users must have access to a paid IBM Cloud account. Charges incur when you create the resources in the IBM Cloud account, which is initiated by clicking the Apply plan button. [Schematics Access](https://cloud.ibm.com/docs/schematics?topic=schematics-access)
+3. Check to make certain you have the appropriate role access on your account to provision infrastructure. If you are assigned an IBM Cloud Schematics service access role, you can view, create, update, or delete workspaces in IBM Cloud Schematics. To provision the IBM Cloud resources that you defined in your Terraform template, you must be assigned the IAM platform or service access role that is required to provision the individual resource. Refer to the [documentation](https://cloud.ibm.com/docs/home/alldocs) for your resource to determine the access policies that you need to provision and work with your resource. To successfully provision IBM Cloud resources, users must have access to a paid IBM Cloud account. Charges incur when you create the resources in the IBM Cloud account, which is initiated by clicking the Apply plan button.
+
+[Schematics Access](https://cloud.ibm.com/docs/schematics?topic=schematics-access)
 
 4. In this lab we will be using the following resources. Double-check your access prior to applying the plan.
 - Schematics
