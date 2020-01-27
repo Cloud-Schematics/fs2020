@@ -22,9 +22,9 @@ For Gen2 resource interaction via the CLI, you are required to have the infrastr
 
 `ibmcloud plugin install infrastructure-service`
 
-This lab will be using Gen 2 of the VPC. Set your CLI to target Gen2.
+This lab will be using Gen 2 of the VPC. Set your CLI to target Gen2. As Gen2 is only available in US-South, make sure to select the region.
 
-`ibmcloud is target --gen 2`
+`ibmcloud is target -r us-south --gen 2`
 
 List the available images, and record the ID of the image in which you wish to use. Ubuntu 18.04 is set by default.
 
