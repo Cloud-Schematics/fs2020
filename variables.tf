@@ -3,11 +3,6 @@ variable "vpc_name" {
   description = "Specify a name for you VPC"
 }
 
-variable "vpc1_cidr" {
-  default = "172.16.0.0/16"
-  description = "Default CIDR for the VPC network"
-}
-
 variable "zone1" {
   default = "us-south-1"
   description = "Define the 1st zone of the region"
