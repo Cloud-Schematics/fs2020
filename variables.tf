@@ -1,6 +1,11 @@
+variable "ibmcloud_region" {
+  description = "Preferred IBM Cloud region to use for your infrastructure"
+  default = "us-south"
+}
+
 variable "vpc_name" {
   default = "vpc-fs2020-lab"
-  description = "Specify a name for you VPC"
+  description = "Name of your VPC"
 }
 
 variable "zone1" {
