@@ -3,6 +3,9 @@
 
 This lab will introduce you to the concepts within Schematics and how to create a VPC, setup two subnets, and place a virtual instance in each as well as deploy a load balancer attached to the servers. A simple cloud-init script will install nginx, just to showcase an http response for proving out the example.
 
+![Workspace Architecture](docs/workspace-architecture.png)
+
+
 ## Prerequisites
 
 1. You must have an IBM Cloud account. You can sign up for a trial account if you do not have an account. The account will require the IBMid. If you do not have an IBMid, register and one will be created.
