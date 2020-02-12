@@ -10,17 +10,15 @@ This lab will introduce you to the concepts within Schematics and how to create 
 
 1. You must have an IBM Cloud account. You can sign up for a trial account if you do not have an account. The account will require the IBMid. If you do not have an IBMid, register and one will be created.
 
-2. You will need to have an Infrastructure Username and API Key as well as an IBM Cloud API Key. Additionally, you should have the IBM Cloud CLI installed.
+2. Check to make certain you have the appropriate role access on your account to provision infrastructure. If you are assigned an IBM Cloud Schematics service access role, you can view, create, update, or delete workspaces in IBM Cloud Schematics. To provision the IBM Cloud resources that you defined in your Terraform template, you must be assigned the IAM platform or service access role that is required to provision the individual resource. Refer to the [documentation](https://cloud.ibm.com/docs/home/alldocs) for your resource to determine the access policies that you need to provision and work with your resource. To successfully provision IBM Cloud resources, users must have access to a paid IBM Cloud account. Charges incur when you create the resources in the IBM Cloud account, which is initiated by clicking the Apply plan button. Here's a link to the docs for [Schematics Access](https://cloud.ibm.com/docs/schematics?topic=schematics-access).
 
-3. Check to make certain you have the appropriate role access on your account to provision infrastructure. If you are assigned an IBM Cloud Schematics service access role, you can view, create, update, or delete workspaces in IBM Cloud Schematics. To provision the IBM Cloud resources that you defined in your Terraform template, you must be assigned the IAM platform or service access role that is required to provision the individual resource. Refer to the [documentation](https://cloud.ibm.com/docs/home/alldocs) for your resource to determine the access policies that you need to provision and work with your resource. To successfully provision IBM Cloud resources, users must have access to a paid IBM Cloud account. Charges incur when you create the resources in the IBM Cloud account, which is initiated by clicking the Apply plan button. Here's a link to the docs for [Schematics Access](https://cloud.ibm.com/docs/schematics?topic=schematics-access).
-
-4. In this lab we will be using the following resources. Double-check your access prior to applying the plan.
+3. In this lab we will be using the following resources. Double-check your access prior to applying the plan.
 - Schematics
 - VPC Infrastructure
 
 ![IAM Access](docs/schematics-iam-access.png)
 
-5. If you want to modify the variables for Image and Compute Profile, you will need to obtain these values from the CLI.
+4. If you want to modify the variables for Image and Compute Profile, you will need to obtain these values from the IBM CLI. If you do not have the IBM Cloud CLI you will need to install locally to be able to use these commands.
 For Gen2 resource interaction via the CLI, you are required to have the infrastructure-services plugin.
 
 `ibmcloud plugin install infrastructure-service`
@@ -37,7 +35,7 @@ List the available Compute profiles and record the Name of the profile in which 
 
 `imbcloud is instance-profiles`
 
-6. If you choose to do the optional steps at the end of the lab, you must fork the project into your own repo so that you can make the required modifications and push back into your repo. If you choose to not do the additional steps, or do not have a Github account available, you can just use the lab Git url, but will not have the ability to modify any of the plan. All modifications will only be done via the variables available.
+5. If you choose to do the optional steps at the end of the lab, you must fork the project into your own repo so that you can make the required modifications and push back into your repo. If you choose to not do the additional steps, or do not have a Github account available, you can just use the lab Git url, but will not have the ability to modify any of the plan. All modifications will only be done via the variables available.
 
 ## Task 1: Get Familiar with the Terraform Templates
 Within the project, there are various files in which you will need to have familiarity with, as well as know which variables you will be required to specify values for.
@@ -53,7 +51,7 @@ Within the project, there are various files in which you will need to have famil
 
 A Workspace is the defining environment in which you want to provision within Schematics. The resources defined by the Terraform templates will make up this Workspace. The Terraform templates reside within a GitHub or GitLab repository. For this lab, we will be using this GitHub repository ([https://github.com/Cloud-Schematics/fs2020](https://github.com/Cloud-Schematics/fs2020)) containing the Terraform template files to provision resources. 
 
-1. Login in to your IBM Cloud account via the portal. Navigate to the menu and select [Schematics](https://cloud.ibm.com/schematics).
+1. Log in in to your IBM Cloud account via the portal. Navigate to the menu and select [Schematics](https://cloud.ibm.com/schematics).
 
 ![Schematics](docs/schematics-menu.png)
 
