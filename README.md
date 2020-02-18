@@ -18,7 +18,9 @@ This lab will introduce you to the concepts within Schematics and how to create 
 
 ![IAM Access](docs/schematics-iam-access.png)
 
-4. If you want to modify the variables for Image and Compute Profile, you will need to obtain these values from the IBM CLI. If you do not have the IBM Cloud CLI you will need to install locally to be able to use these commands.
+4. A Public SSH Key will be required to create the virtual instances. You will need to populate the ssh_public_key varibale with the contents of your private key. To find out how to create or locate your public key, follow these instructions. [SSH Public Key Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys)
+
+5. If you want to modify the variables for Image and Compute Profile, you will need to obtain these values from the IBM CLI. If you do not have the IBM Cloud CLI you will need to install locally to be able to use these commands.
 For Gen2 resource interaction via the CLI, you are required to have the infrastructure-services plugin.
 
 `ibmcloud plugin install infrastructure-service`
@@ -35,7 +37,7 @@ List the available Compute profiles and record the Name of the profile in which 
 
 `imbcloud is instance-profiles`
 
-5. If you choose to do the optional steps at the end of the lab, you must fork the project into your own repo so that you can make the required modifications and push back into your repo. If you choose to not do the additional steps, or do not have a Github account available, you can just use the lab Git url, but will not have the ability to modify any of the plan. All modifications will only be done via the variables available.
+6. If you choose to do the optional steps at the end of the lab, you must fork the project into your own repo so that you can make the required modifications and push back into your repo. If you choose to not do the additional steps, or do not have a Github account available, you can just use the lab Git url, but will not have the ability to modify any of the plan. All modifications will only be done via the variables available.
 
 ## Task 1: Get Familiar with the Terraform Templates
 Within the project, there are various files in which you will need to have familiarity with, as well as know which variables you will be required to specify values for.
