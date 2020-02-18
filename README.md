@@ -18,7 +18,7 @@ This lab will introduce you to the concepts within Schematics and how to create 
 
 ![IAM Access](docs/schematics-iam-access.png)
 
-4. A Public SSH Key will be required to create the virtual instances. You will need to populate the ssh_public_key varibale with the contents of your private key. To find out how to create or locate your public key, follow these instructions. [SSH Public Key Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys)
+4. A SSH Key will be required to create the virtual instances. You will need to populate the ssh_public_key variable with the contents of your private key. To find out how to create or locate your public key, follow these instructions. [SSH Public Key Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys)
 
 5. If you want to modify the variables for Image and Compute Profile, you will need to obtain these values from the IBM CLI. If you do not have the IBM Cloud CLI you will need to install locally to be able to use these commands.
 For Gen2 resource interaction via the CLI, you are required to have the infrastructure-services plugin.
