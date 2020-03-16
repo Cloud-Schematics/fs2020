@@ -35,7 +35,7 @@ List the available images, and record the ID of the image in which you wish to u
 
 List the available Compute profiles and record the Name of the profile in which you wish to use. cx2-2x4 is set by default.
 
-`imbcloud is instance-profiles`
+`ibmcloud is instance-profiles`
 
 6. If you choose to do the optional steps at the end of the lab, you must fork the project into your own repo so that you can make the required modifications and push back into your repo. If you choose to not do the additional steps, or do not have a Github account available, you can just use the lab Git url, but will not have the ability to modify any of the plan. All modifications will only be done via the variables available.
 
