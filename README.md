@@ -18,14 +18,16 @@ This lab will introduce you to the concepts within Schematics and how to create 
 
 ![IAM Access](docs/schematics-iam-access.png)
 
-4. A SSH Key will be required to create the virtual instances. You will need to populate the ssh_public_key variable with the contents of your private key. To find out how to create or locate your public key, follow these instructions. [SSH Public Key Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys). If you do not have the ability to create a SSH Key, use this [Example Public Key](https://raw.githubusercontent.com/Cloud-Schematics/fs2020/master/example.pubkey). If you use the example key, you will not be able authenticate to the instances, but the lab will still function.
+4. A SSH Key will be required to create the virtual instances. You will need to populate the ssh_key_name variable with the name of a VPC SSH Key that you have already created for the region in which you plan to use. To find out how to create or locate your public key, follow these instructions. [SSH Public Key Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys). If you do not have the ability to create a SSH Key, use this [Example Public Key](https://raw.githubusercontent.com/Cloud-Schematics/fs2020/master/example.pubkey). If you use the example key, you will not be able authenticate to the instances, but the lab will still function.
 
 5. If you want to modify the variables for Image and Compute Profile, you will need to obtain these values from the IBM CLI. If you do not have the IBM Cloud CLI you will need to install locally to be able to use these commands.
 For Gen2 resource interaction via the CLI, you are required to have the infrastructure-services plugin.
 
 `ibmcloud plugin install infrastructure-service`
 
-This lab will be using Gen 2 of the VPC. Set your CLI to target Gen2. As Gen2 is only available in US-South, make sure to select the region.
+This lab will be using Gen 2 of the VPC. Set your CLI to target Gen2. As Gen2 is only available in US-South, US-East and EU-GB, make sure to select one of these regions.
+
+`ibmcloud is regions`
 
 `ibmcloud is target -r us-south --gen 2`
 

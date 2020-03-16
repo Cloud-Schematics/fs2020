@@ -28,9 +28,9 @@ variable "zone2_cidr" {
   description = "CIDR block to be used for zone 2"
 }
 
-variable "ssh_public_key" {
+variable "ssh_key_name" {
   default = ""
-  description = "SSH Public Key contents to be used"
+  description = "Name of existing VPC SSH Key"
 }
 
 variable "image" {
