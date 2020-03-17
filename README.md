@@ -20,6 +20,9 @@ This lab will introduce you to the concepts within Schematics and how to create 
 
 4. A SSH Key will be required to create the virtual instances. You will need to populate the ssh_key_name variable with the name of a VPC SSH Key that you have already created for the region in which you plan to use. To find out how to create or locate your public key, follow these instructions. [SSH Public Key Docs](https://cloud.ibm.com/docs/vpc?topic=vpc-ssh-keys#locating-ssh-keys). If you do not have the ability to create a SSH Key, use this [Example Public Key](https://raw.githubusercontent.com/Cloud-Schematics/fs2020/master/example.pubkey). If you use the example key, you will not be able authenticate to the instances, but the lab will still function.
 
+![IAM Access](docs/vpc-ssh-key.png)
+
+
 5. If you want to modify the variables for Image and Compute Profile, you will need to obtain these values from the IBM CLI. If you do not have the IBM Cloud CLI you will need to install locally to be able to use these commands.
 For Gen2 resource interaction via the CLI, you are required to have the infrastructure-services plugin.
 
