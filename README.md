@@ -83,7 +83,7 @@ A Workspace is the defining environment in which you want to provision within Sc
 - **zone2** - Enter a secondary Zone to use within the region. default: us-south-2
 - **zone1_cidr** - Provide a valid CIDR block to use for your VPC
 - **zone2_cidr** - Provide a valid CIDR block to use for your VPC
-- **ssh_public_key** - Enter the contents of your SSH Public key to be used for the Virtual instances
+- **ssh_key_name** - Provide the name of an existing VPC SSH key
 - **image** - Provide the ID of the OS Image you wish to use
 - **profile** - Provide the name of the Instance Profile type you wish to provision
 
