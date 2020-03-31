@@ -30,15 +30,15 @@ For Gen2 resource interaction via the CLI, you are required to have the infrastr
 
 This lab will be using Gen 2 of the VPC. Set your CLI to target Gen2. As Gen2 is only available in US-South, US-East and EU-GB, make sure to select one of these regions.
 
+`ibmcloud is target --gen 2`
+
 `ibmcloud is regions`
 
-`ibmcloud is target -r us-south --gen 2`
-
-List the available images, and record the ID of the image in which you wish to use. Ubuntu 18.04 is set by default.
+List the available images, and record the ID of the image in which you wish to use. Ubuntu 18.04 is set by default in the variables for the lab.
 
 `ibmcloud is images list`
 
-List the available Compute profiles and record the Name of the profile in which you wish to use. cx2-2x4 is set by default.
+List the available Compute profiles and record the Name of the profile in which you wish to use. cx2-2x4 is set by default in the variables for the lab.
 
 `ibmcloud is instance-profiles`
 
@@ -77,7 +77,7 @@ A Workspace is the defining environment in which you want to provision within Sc
 ![Workspace Repo URL](docs/workspace-repo-url.png)
 
 2. Upon clicking the "Retrieve input variables" button, Schematics will go out to the provided Github URL and retrieve the template files, also extracting out the variables that have been defined. You should now see the variables populated in a table on your screen. Update any variables for the items in which you choose to modify by entering a new value in the "Override value" textbox. Most variables will already have a default value assigned. You will also notice a sensitive checkbox for each variable. You should not need to secure any of these variables, but if you choose this option, the value will be hidden from the UI later.
-- **ibmcloud_region** - Select the region in which you want to deploy the VPC into, default set to Dallas
+- **ibmcloud_region** - Select the region in which you want to deploy the VPC into, default set to us-south
 - **vpc_name** - Provide a name for your VPC, this will also be used to prefix some other resources
 - **zone1** - Enter the initial Zone to use within your region. default: us-south-1
 - **zone2** - Enter a secondary Zone to use within the region. default: us-south-2

@@ -4,7 +4,7 @@ data "ibm_is_ssh_key" "sshkey1" {
 
 resource "ibm_is_vpc" "vpc1" {
   name = "${var.vpc_name}"
-  address_prefix_management = "manual"
+  address_prefix_management = "auto"
 }
 
 resource "ibm_is_vpc_address_prefix" "vpc-ap1" {
